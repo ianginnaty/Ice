@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
-// import { FlashMessagesModule  } from 'angular2-flash-messages';
-// import { JwtModule } from '@auth0/angular-jwt'
+import { FlashMessagesModule  } from 'angular2-flash-messages';
+import { JwtModule } from '@auth0/angular-jwt'
 
 //Main App module
 import { AppComponent } from './app.component';
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     imports: [
         HttpClientModule,
+        HttpModule,
         BrowserAnimationsModule, // required for ng2-tag-input
         CoreModule,
         LayoutModule,
@@ -65,6 +67,15 @@ export function createTranslateLoader(http: HttpClient) {
         RoutesModule,
         FormsModule,
         // AppRoutingModule,
+        FlashMessagesModule.forRoot(),
+        JwtModule.forRoot({
+         config: {
+           tokenGetter: () => {
+             return localStorage.getItem('id_token');
+           },
+           whitelistedDomains: ['http://localhost:3000']
+         }
+       }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

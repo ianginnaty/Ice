@@ -10,7 +10,7 @@ margin-top: 0.5em;
 }
 
 .example-header-image {
-  background-image: url('../../../assets/images/volcano.jpg');
+  background-image: url('~/assets/images/volcano.jpg');
   background-size: cover;
 }
 

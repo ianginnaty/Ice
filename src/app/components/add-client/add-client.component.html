@@ -1,29 +1,4 @@
 <div class="">
   <h2> Add Client </h2>
-  <div class="container card">
-    <mat-card>
-      <form  class="example-form" class="flex-container">
-        <div class="example-container">
-          <mat-form-field class="example-container" >
-            <input matInput placeholder="First Name" [(ngModel)]="first_name" name="first_name" required>
-          </mat-form-field>
-          <mat-form-field class="example-container">
-            <input matInput placeholder="Last Name" [(ngModel)]="last_name" name="last_name" required>
-          </mat-form-field>
-          <mat-form-field class="example-container">
-            <input matInput placeholder="Say something nice" [(ngModel)]="phone" name="phone" required>
-          </mat-form-field>
-          <mat-form-field class="example-container">
-            <input matInput placeholder="Not required" name="">
-          </mat-form-field>
-          <button mat-raised-button (click)="addClient()" onClick="window.location.reload()" color="primary" >
-            add
-          </button>
-        </div>
-      </form>
-    </mat-card>
-  </div>
-  <button mat-fab color="primary" class="back" (click)="goBack()">
-    <mat-icon class="icon">arrow_back</mat-icon>
-  </button>
+
 </div>
