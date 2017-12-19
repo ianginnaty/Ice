@@ -17,7 +17,6 @@ export class ClientService {
 
   //add Client
   addClient(newClient){
-  debugger;
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/api/client', newClient,{headers:headers})

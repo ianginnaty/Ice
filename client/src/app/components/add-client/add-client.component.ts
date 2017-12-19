@@ -10,7 +10,7 @@ import {Location} from '@angular/common';
   styleUrls: ['./add-client.component.css']
 })
 export class AddClientComponent implements OnInit {
-  clients: Client[];
+  // clients: Client[];
   client: Client;
   first_name: string;
   last_name: string;
@@ -31,7 +31,6 @@ export class AddClientComponent implements OnInit {
   }
 
   addClient(){
-    debugger;
     const newClient ={
       first_name: this.first_name,
       last_name: this.last_name,
@@ -39,9 +38,9 @@ export class AddClientComponent implements OnInit {
     }
     this.clientService.addClient(newClient)
       .subscribe(client =>{
-        this.clients.push(client);
+        return;
       });
-    // this.router.navigate(['/client']);
+    this.router.navigate(['/client']);
   }
 
 }

@@ -27,6 +27,7 @@ export class ClientComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // debugger;
     this.authService.authClient().subscribe(client => {
     this.user = client.user;
     },
