@@ -3,6 +3,10 @@ declare var $: any;
 
 import { SettingsService } from './core/settings/settings.service';
 
+import {AuthService} from './services/auth/auth.service';
+import {Router} from '@angular/router';
+import {FlashMessagesService} from 'angular2-flash-messages';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -21,7 +25,19 @@ export class AppComponent implements OnInit {
     @HostBinding('class.aside-toggled') get asideToggled() { return this.settings.layout.asideToggled; };
     @HostBinding('class.aside-collapsed-text') get isCollapsedText() { return this.settings.layout.isCollapsedText; };
 
-    constructor(public settings: SettingsService) { }
+    constructor(
+      public settings: SettingsService,
+      private authService: AuthService,
+      private router: Router,
+      private flashMessage: FlashMessagesService
+    ) { }
+
+    onLogoutClick(){
+      this.authService.logout();
+      this.flashMessage.show('You have logged out!', { cssClass: 'alert-success', timeout: 5000});
+      this.router.navigate(['/login']);
+      return false;
+    }
 
     ngOnInit() {
         $(document).on('click', '[href="#"]', e => e.preventDefault());
