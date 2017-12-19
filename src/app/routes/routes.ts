@@ -7,6 +7,14 @@ import { LockComponent } from './pages/lock/lock.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
+import { LunchComponent } from '../components/lunch/lunch.component';
+import { ClientComponent } from '../components/client/client.component';
+import { UserComponent } from '../components/user/user.component';
+// import { RegisterComponent } from '../components/register/register.component';
+// import { LoginComponent } from '../components/login/login.component';
+import { EditClientComponent } from '../components/edit-client/edit-client.component';
+import { AddClientComponent } from '../components/add-client/add-client.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 export const routes = [
 
@@ -25,7 +33,15 @@ export const routes = [
             { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
             { path: 'blog', loadChildren: './blog/blog.module#BlogModule' },
             { path: 'ecommerce', loadChildren: './ecommerce/ecommerce.module#EcommerceModule' },
-            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' }
+            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
+            { path: '', redirectTo: '/login', pathMatch: 'full' },
+            { path: 'lunch', component: LunchComponent, canActivate:[AuthGuard] },
+            { path: 'client', component: ClientComponent, canActivate:[AuthGuard] },
+            { path: 'user', component: UserComponent, canActivate:[AuthGuard] },
+            { path: 'register', component: RegisterComponent },
+            { path: 'login', component: LoginComponent },
+            { path: 'edit-client', component: EditClientComponent },
+            { path: 'add-client', component: AddClientComponent }
         ]
     },
 
