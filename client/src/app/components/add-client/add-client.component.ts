@@ -31,6 +31,7 @@ export class AddClientComponent implements OnInit {
   }
 
   addClient(){
+    debugger;
     const newClient ={
       first_name: this.first_name,
       last_name: this.last_name,
@@ -40,7 +41,7 @@ export class AddClientComponent implements OnInit {
       .subscribe(client =>{
         this.clients.push(client);
       });
-    this.router.navigate(['/client']);
+    // this.router.navigate(['/client']);
   }
 
 }
