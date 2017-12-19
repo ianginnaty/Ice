@@ -1,0 +1,28 @@
+* {
+margin-top: 0.5em;
+margin-left: 10px;
+}
+.card{
+  margin-left: auto;
+  margin-right: auto;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.back{
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.icon{
+     margin-top: auto;
+     margin-bottom: auto;
+     margin-right: auto;
+     margin-left: auto;
+}
