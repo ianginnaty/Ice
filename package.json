@@ -81,7 +81,7 @@
     "zone.js": "0.8.14",
     "@auth0/angular-jwt": "^1.0.0-beta.9",
     "angular2-flash-messages": "^2.0.4",
-    "passport": "^0.4.0",
+    "passport": "^0.4.0"
   },
   "devDependencies": {
     "@angular/cli": "1.5.4",
