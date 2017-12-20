@@ -8,6 +8,8 @@ import {User} from '../../models/user/user';
 import {Router} from '@angular/router';
 // import {ValidationService} from '../../services/validation/validation.service';
 
+const swal = require('sweetalert');
+
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
@@ -20,6 +22,7 @@ export class RegisterComponent implements OnInit {
     email: string;
     user_name: string;
     password: string;
+    account_agreed: boolean;
 
     valForm: FormGroup;
     passwordForm: FormGroup;
@@ -40,67 +43,55 @@ export class RegisterComponent implements OnInit {
         });
 
         this.valForm = fb.group({
+            'first_name': [null, Validators.required],
+            'last_name': [null, Validators.required],
+            'user_name': [null, Validators.required],
             'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
-            'accountagreed': [null, Validators.required],
+            'account_agreed': [null, Validators.required],
             'passwordGroup': this.passwordForm
         });
     }
 
-    addUser(){
-      const newUser ={
-        first_name: this.first_name,
-        last_name: this.last_name,
-        email: this.email,
-        user_name: this.user_name,
-        password: this.password
+    submitForm($ev, value: any) {
+        $ev.preventDefault();
+        const user ={
+          first_name: this.first_name,
+          last_name: this.last_name,
+          email: this.email,
+          user_name: this.user_name,
+          password: this.password,
+          account_agreed: this.account_agreed
+        }
+
+        for (let c in this.valForm.controls) {
+            this.valForm.controls[c].markAsTouched();
+        }
+        for (let c in this.passwordForm.controls) {
+            this.passwordForm.controls[c].markAsTouched();
+        }
+
+        if (this.valForm.valid) {
+            this.addUser(user);
+            console.log('Valid!');
+            console.log(value);
+        }
     }
 
-          //Required Fields
-      // if(!this.validationService.validateRegister(newUser)){
-      //   this.flashMessage.show('Please fill in all the fields', { cssClass: 'alert-danger', timeout: 5000 });
-      //   return false;
-      // }
-
-      // Required Email
-      // if(!this.validationService.validateEmail(this.email)){
-      //   this.flashMessage.show('Please a valid email', { cssClass: 'alert-danger', timeout: 5000 });
-      //   return false;
-      // }
-
-      this.registerService.addUser(newUser)
-        .subscribe(user =>{
-          if(user.success){
-            alert('You Registerd!');
-            // this.flashMessage.show('You have been Registerd', { cssClass: 'alert-success', timeout: 5000 });
-            this.router.navigate(['/login']);
-          }
-          else{
-            alert('Something went wrong');
-            // this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 5000 });
-            this.router.navigate(['/register']);
-          }
-        });
-
-
-      }
-
-
-    // submitForm($ev, value: any) {
-    //     $ev.preventDefault();
-    //     for (let c in this.valForm.controls) {
-    //         this.valForm.controls[c].markAsTouched();
-    //     }
-    //     for (let c in this.passwordForm.controls) {
-    //         this.passwordForm.controls[c].markAsTouched();
-    //     }
-    //
-    //     if (this.valForm.valid) {
-    //         console.log('Valid!');
-    //         console.log(value);
-    //     }
-    // }
+    addUser(user){
+      this.registerService.addUser(user).subscribe(user =>{
+        if(user.success){
+          swal(user.msg);
+          this.router.navigate(['/login']);
+        }
+        else{
+          swal(user.msg);
+          this.router.navigate(['/register']);
+        }
+      });
+    }
 
     ngOnInit() {
+
     }
 
 }
