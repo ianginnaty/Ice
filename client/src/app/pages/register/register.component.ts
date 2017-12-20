@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../../../core/settings/settings.service';
+import { SettingsService } from '../../core/settings/settings.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
-import {RegisterService} from '../../../services/register/register.service';
-import {User} from '../../../models/user/user';
+import {RegisterService} from '../../services/register/register.service';
+import {User} from '../../models/user/user';
 import {Router} from '@angular/router';
 // import {ValidationService} from '../../services/validation/validation.service';
 

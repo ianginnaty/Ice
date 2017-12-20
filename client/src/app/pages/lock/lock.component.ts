@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { SettingsService } from '../../../core/settings/settings.service';
+import { SettingsService } from '../../core/settings/settings.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
