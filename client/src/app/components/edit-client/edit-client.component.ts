@@ -52,7 +52,7 @@ export class EditClientComponent implements OnInit {
       this.clientService.getClient();
     });
       swal('Client Updated!', '', 'success');
-      this.route.navigate(['/client']);
+      this._location.back();
   }
 
   confirmDelete(id:any){
@@ -81,6 +81,6 @@ export class EditClientComponent implements OnInit {
       .subscribe(data =>{
         return;
       });
-      this.route.navigate(['/client']);
+      this._location.back();
   }
 }

@@ -40,7 +40,7 @@ export class AddClientComponent implements OnInit {
         return;
       });
     swal('Client Created!', '', 'success');
-    this.router.navigate(['/client']);
+    this._location.back();
   }
 
 }
