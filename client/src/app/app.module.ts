@@ -11,7 +11,7 @@ import { FlashMessagesModule  } from 'angular2-flash-messages';
 import { JwtModule } from '@auth0/angular-jwt'
 
 //Main App module
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
 // import { AppRoutingModule } from './routes/app-routing.module';
 
 //Routing modules
