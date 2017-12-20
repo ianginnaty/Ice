@@ -3,14 +3,13 @@ import {ClientService} from '../../services/client/client.service';
 import {Client} from '../../models/client/client';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
-
+const swal = require('sweetalert');
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
   styleUrls: ['./add-client.component.css']
 })
 export class AddClientComponent implements OnInit {
-  // clients: Client[];
   client: Client;
   first_name: string;
   last_name: string;
@@ -40,6 +39,7 @@ export class AddClientComponent implements OnInit {
       .subscribe(client =>{
         return;
       });
+    swal('Client Created!', '', 'success');
     this.router.navigate(['/client']);
   }
 

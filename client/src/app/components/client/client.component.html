@@ -9,10 +9,10 @@
                   <p *ngIf="toggleInfo[client._id]">
                     {{client.phone}}
                   </p>
-                  
-                  <button class="mb-sm btn btn-info" type="button" (click)="showInfo(client)">View Client</button>
-                  <button class="mb-sm btn btn-primary" type="button" (click)="grabClient(client)">Edit</button>
-                  <button class="mb-sm btn btn-danger" type="button" (click)="deleteClient(client._id)">Delete</button>
+
+                  <button class="mb-sm btn btn-info button-space " type="button" (click)="showInfo(client)">View Client</button>
+                  <button class="mb-sm btn btn-primary button-space " type="button" (click)="grabClient(client)">Edit</button>
+                  <button class="mb-sm btn btn-danger button-space " type="button" (click)="confirmDelete(client._id)">Delete</button>
                 </div>
             </div>
         </div>

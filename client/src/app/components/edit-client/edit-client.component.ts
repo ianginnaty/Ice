@@ -5,6 +5,7 @@ import {AuthService} from '../../services/auth/auth.service';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+const swal = require('sweetalert');
 
 @Component({
   selector: 'edit-client',
@@ -51,6 +52,26 @@ export class EditClientComponent implements OnInit {
       this.clientService.getClient();
     });
       this.route.navigate(['/client']);
+  }
+
+  confirmDelete(id:any){
+    swal({
+        title: 'Delete Client?',
+        text: 'Confirm!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, delete it!',
+        closeOnConfirm: false
+    }, (isConfirm) => {
+      if(isConfirm){
+        this.deleteClient();
+        swal('Client Deleted!', '', 'success');
+      } else {
+        return false;
+      }
+
+    });
   }
 
   deleteClient(){

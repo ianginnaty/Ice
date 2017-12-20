@@ -1,22 +1,6 @@
-h1 {
-  color: #000;
-}
-* {
+.button-space {
 margin-top: 0.5em;
-margin-left: 10px;
-}
-.example-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.example-container {
-  width: 100%;
-}
-
-.card-header{
-  font-size: 25px;
-  font-weight: bold;
+margin-left: 1%;
 }
 
 .addClient{
@@ -25,9 +9,6 @@ margin-left: 10px;
 }
 
 .button{
-  /* float:right;
-  margin-right: 5%; */
-  /* margin-top: 5%; */
   bottom: 5%;
   right: 5%;
   position: fixed;
@@ -35,13 +16,8 @@ margin-left: 10px;
 }
 
 .icon{
-     margin-top: auto;
-     margin-bottom: auto;
-     margin-right: auto;
-     margin-left: auto;
-}
-
-.card{
-  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
   margin-right: auto;
+  margin-left: auto;
 }
