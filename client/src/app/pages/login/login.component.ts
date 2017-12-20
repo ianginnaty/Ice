@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     submitForm($ev, value: any) {
         $ev.preventDefault();
         const user = {
-          user_name:value.email,
+          email:value.email,
           password:value.password
         }
         for (let c in this.valForm.controls) {

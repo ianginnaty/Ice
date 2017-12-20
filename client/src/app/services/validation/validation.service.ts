@@ -23,7 +23,7 @@ export class ValidationService {
   }
 
   validateUser(user){
-    if(user.user_name == undefined  || user.password == undefined ){
+    if(user.email == undefined  || user.password == undefined ){
       return false;
     }
     else{

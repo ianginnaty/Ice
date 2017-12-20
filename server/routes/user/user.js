@@ -35,10 +35,10 @@ router.post('/user', (req, res, next)=>{
 
 //Auth user
 router.post('/authenticate', (req, res, next) => {
-    const user_name = req.body.user_name;
+    const email = req.body.email;
     const password = req.body.password;
 
-  User.getUserByUsername(user_name, (err, user)=>{
+  User.getUserByEmail(email, (err, user)=>{
     if(err) throw err;
     if(!user){
       return res.json({success: false, msg: 'User not found'});
