@@ -61,11 +61,11 @@
                             </label>
                         </div>
                     </div>
-                    <span class="text-danger" *ngIf="valForm.controls['account_agreed'].hasError('required') && (valForm.controls['account_agreed'].dirty || valForm.controls['account_agreed'].touched)">You must agree the terms</span>
+                    <!-- <span class="text-danger" *ngIf="valForm.controls['account_agreed'].hasError('required') && (valForm.controls['account_agreed'].dirty || valForm.controls['account_agreed'].touched)">You must agree the terms</span> -->
                     <button class="btn btn-block btn-primary mt-lg" type="submit">Create account</button>
                 </form>
                 <!-- <div class="alert alert-danger text-center"></div> -->
-                <p class="pt-lg text-center">Have an account?</p><a class="btn btn-block btn-default" [routerLink]="'/login'">Signup</a>
+                <p class="pt-lg text-center">Have an account?</p><a class="btn btn-block btn-default" [routerLink]="'/login'">Return to Login</a>
             </div>
         </div>
         <!-- END panel-->

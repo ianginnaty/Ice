@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
       private authService: AuthService,
       private router: Router,
       // private validationService: ValidationService,
-      fb: FormBuilder
+      formBuilder: FormBuilder
     ) {
 
-        this.valForm = fb.group({
+        this.valForm = formBuilder.group({
             'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
             'password': [null, Validators.required]
         });

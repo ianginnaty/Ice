@@ -31,23 +31,23 @@ export class RegisterComponent implements OnInit {
       public settings: SettingsService,
       private router: Router,
       private registerService: RegisterService,
-      fb: FormBuilder
+      formBuilder: FormBuilder
     ) {
 
         let password = new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9]{6,10}$')]));
         let certainPassword = new FormControl('', CustomValidators.equalTo(password));
 
-        this.passwordForm = fb.group({
+        this.passwordForm = formBuilder.group({
             'password': password,
             'confirmPassword': certainPassword
         });
 
-        this.valForm = fb.group({
+        this.valForm = formBuilder.group({
             'first_name': [null, Validators.required],
             'last_name': [null, Validators.required],
             'user_name': [null, Validators.required],
             'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
-            'account_agreed': [null, Validators.required],
+            'account_agreed': [null],
             'passwordGroup': this.passwordForm
         });
     }
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
         for (let c in this.passwordForm.controls) {
             this.passwordForm.controls[c].markAsTouched();
         }
-
+        debugger;
         if (this.valForm.valid) {
             this.addUser(user);
             console.log('Valid!');
