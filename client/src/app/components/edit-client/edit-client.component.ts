@@ -5,6 +5,8 @@ import {AuthService} from '../../services/auth/auth.service';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 const swal = require('sweetalert');
 
 @Component({
@@ -18,14 +20,22 @@ export class EditClientComponent implements OnInit {
   first_name: string;
   last_name: string;
   phone: string;
+  valForm: FormGroup;
 
   constructor(
     private clientService: ClientService,
     private authService: AuthService,
     private router: ActivatedRoute,
     private route: Router,
-    private _location: Location
-  ) { }
+    private _location: Location,
+    formBuilder: FormBuilder
+  ) {
+      this.valForm = formBuilder.group({
+        'first_name': [null, Validators.compose([Validators.required, CustomValidators.first_name])],
+        'last_name': [null, Validators.compose([Validators.required, CustomValidators.last_name])],
+        'phone': [null, Validators.required]
+      });
+    }
 
   ngOnInit() {
     this.router.queryParams.subscribe(params =>{
@@ -38,6 +48,23 @@ export class EditClientComponent implements OnInit {
 
   goBack(){
     this._location.back();
+  }
+
+  submitForm($ev, value: any, params) {
+      $ev.preventDefault();
+      const user = {
+        first_name:value.first_name,
+        last_name:value.last_name,
+        phone:value.phone,
+      }
+      for (let c in this.valForm.controls) {
+          this.valForm.controls[c].markAsTouched();
+      }
+      if (this.valForm.valid) {
+          this.updateClient(params);
+          console.log('Valid!');
+          console.log(value);
+      }
   }
 
   updateClient(params){

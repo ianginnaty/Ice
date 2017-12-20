@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { SettingsService } from '../../core/settings/settings.service';
 const swal = require('sweetalert');
 
 @Component({
@@ -24,7 +23,6 @@ export class AddClientComponent implements OnInit {
     private clientService: ClientService,
     private router: Router,
     private _location: Location,
-    public settings: SettingsService,
     formBuilder: FormBuilder
   ) {
       this.valForm = formBuilder.group({
