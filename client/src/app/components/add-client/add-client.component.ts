@@ -3,7 +3,11 @@ import {ClientService} from '../../services/client/client.service';
 import {Client} from '../../models/client/client';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
+import { SettingsService } from '../../core/settings/settings.service';
 const swal = require('sweetalert');
+
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
@@ -14,23 +18,49 @@ export class AddClientComponent implements OnInit {
   first_name: string;
   last_name: string;
   phone: string;
-
+  valForm: FormGroup;
 
   constructor(
     private clientService: ClientService,
     private router: Router,
-    private _location: Location
-  ) { }
+    private _location: Location,
+    public settings: SettingsService,
+    formBuilder: FormBuilder
+  ) {
+      this.valForm = formBuilder.group({
+        'first_name': [null, Validators.compose([Validators.required, CustomValidators.first_name])],
+        'last_name': [null, Validators.compose([Validators.required, CustomValidators.last_name])],
+        'phone': [null, Validators.required]
+      });
+  }
 
   ngOnInit() {
   }
+
+  submitForm($ev, value: any) {
+      $ev.preventDefault();
+      const user = {
+        first_name:value.first_name,
+        last_name:value.last_name,
+        phone:value.phone,
+      }
+      for (let c in this.valForm.controls) {
+          this.valForm.controls[c].markAsTouched();
+      }
+      if (this.valForm.valid) {
+          this.addClient();
+          console.log('Valid!');
+          console.log(value);
+      }
+  }
+
 
   goBack(){
     this._location.back();
   }
 
   addClient(){
-    const newClient ={
+    const newClient = {
       first_name: this.first_name,
       last_name: this.last_name,
       phone: this.phone
