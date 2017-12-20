@@ -1,9 +1,9 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 declare var $: any;
 
-import { SettingsService } from './core/settings/settings.service';
+import { SettingsService } from '../../core/settings/settings.service';
 
-import {AuthService} from './services/auth/auth.service';
+import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
 

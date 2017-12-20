@@ -4,10 +4,10 @@ import { TestBed, async} from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { CoreModule } from './core/core.module';
-import { LayoutModule } from './layout/layout.module';
-import { SharedModule } from './shared/shared.module';
-import { RoutesModule } from './routes/routes.module';
+import { CoreModule } from '../../core/core.module';
+import { LayoutModule } from '../../layout/layout.module';
+import { SharedModule } from '../../shared/shared.module';
+import { RoutesModule } from '../../routes/routes.module';
 import { APP_BASE_HREF } from '@angular/common';
 
 describe('App: Ng2angle', () => {
