@@ -1,7 +1,12 @@
+const Client = {
+  text: 'Client',
+  link: '/client',
+  icon: 'icon-home'
+};
 
 const Home = {
-    text: 'Home',
-    link: '/home',
+    text: 'Client',
+    link: '/client',
     icon: 'icon-home'
 };
 
@@ -379,6 +384,10 @@ const Extras = {
     ]
 }
 
+const clientMenu = {
+    text: 'Client Navigation',
+    heading: true
+};
 
 const headingMain = {
     text: 'Main Navigation',
@@ -396,19 +405,21 @@ const headingMore = {
 };
 
 export const menu = [
-    headingMain,
-    Home,
-    Dashboard,
-    Widgets,
-    headingComponents,
-    Elements,
-    Forms,
-    Charts,
-    Tables,
-    Maps,
-    headingMore,
-    Pages,
-    Blog,
-    Ecommerce,
-    Extras
+    clientMenu,
+    // headingMain,
+    Client,
+    // Home,
+    // Dashboard,
+    // Widgets,
+    // headingComponents,
+    // Elements,
+    // Forms,
+    // Charts,
+    // Tables,
+    // Maps,
+    // headingMore,
+    // Pages,
+    // Blog,
+    // Ecommerce,
+    // Extras
 ];

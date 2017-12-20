@@ -5,8 +5,7 @@ import { CustomValidators } from 'ng2-validation';
 import {AuthService} from '../../../services/auth/auth.service';
 import {User} from '../../../models/user/user';
 import {Router} from '@angular/router';
-import {FlashMessagesService} from 'angular2-flash-messages';
-import {ValidationService} from '../../../services/validation/validation.service';
+// import {ValidationService} from '../../../services/validation/validation.service';
 
 @Component({
     selector: 'app-login',
@@ -22,13 +21,12 @@ export class LoginComponent implements OnInit {
       public settings: SettingsService,
       private authService: AuthService,
       private router: Router,
-      private flashMessage: FlashMessagesService,
-      private validationService: ValidationService,
+      // private validationService: ValidationService,
       fb: FormBuilder
     ) {
 
         this.valForm = fb.group({
-            'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
+            'user_name': [null, Validators.compose([Validators.required, CustomValidators.user_name])],
             'password': [null, Validators.required]
         });
 
@@ -43,29 +41,30 @@ export class LoginComponent implements OnInit {
             console.log('Valid!');
             console.log(value);
         }
-        this.onLogin(value.email, value.password);
+        this.onLogin();
     }
 
-    onLogin(usename, password){
+    onLogin(){
       const user = {
-        user_name:usename,
-        password:password
+        user_name:this.user_name,
+        password:this.password
       }
       //Required Fields
-      if(!this.validationService.validateUser(user)){
-        this.flashMessage.show('Please fill in all the fields', { cssClass: 'alert-danger', timeout: 5000 });
-        return false;
-      }
+      // if(!this.validationService.validateUser(user)){
+      //   this.flashMessage.show('Please fill in all the fields', { cssClass: 'alert-danger', timeout: 5000 });
+      //   return false;
+      // }
 
       this.authService.authenticateUser(user)
         .subscribe(user=>{
           if(user.success){
             this.authService.storeUserData(user.token, user.user);
-            this.flashMessage.show('Welcome to the Demo', { cssClass: 'alert-success', timeout: 5000 });
+            // this.flashMessage.show('Welcome to the Demo', { cssClass: 'alert-success', timeout: 5000 });
+            alert('You logged in!');
             this.router.navigate(['/client']);
           }
           else{
-            this.flashMessage.show('Incorrect User Name or Password', { cssClass: 'alert-danger', timeout: 5000 });
+            alert('Something went wrong');
           }
 
         });

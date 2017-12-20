@@ -9,15 +9,16 @@
             </div>
             <div class="panel-body">
                 <p class="text-center pv">SIGN IN TO CONTINUE.</p>
-                <form [formGroup]="valForm" class="form-validate mb-lg" role="form" name="loginForm" novalidate="" (submit)="submitForm($event, valForm.value)">
+                <!-- <form [formGroup]="valForm" class="form-validate mb-lg" role="form" name="loginForm" novalidate="" (submit)="onLogin()"> -->
+                  <form class="form-validate mb-lg" role="form" name="loginForm" novalidate="" (submit)="onLogin()">
                     <div class="form-group has-feedback">
-                        <input class="form-control" id="exampleInputEmail1" type="email" name="email" placeholder="Enter email" autocomplete="off" formControlName="email" required="" />
+                        <input class="form-control"type="text" name="user_name" placeholder="Enter user name" [(ngModel)]="user_name" autocomplete="off" required="" />
                         <span class="fa fa-envelope form-control-feedback text-muted"></span>
-                        <span class="text-danger" *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">This field is required</span>
-                        <span class="text-danger" *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">This field must be a valid email address</span>
+                        <span class="text-danger" *ngIf="valForm.controls['user_name'].hasError('required') && (valForm.controls['user_name'].dirty || valForm.controls['user_name'].touched)">This field is required</span>
+                        <span class="text-danger" *ngIf="valForm.controls['user_name'].hasError('user_name') && (valForm.controls['user_name'].dirty || valForm.controls['user_name'].touched)">This field must be a valid User Name</span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input class="form-control" id="exampleInputPassword1" type="password" name="password" placeholder="Password" formControlName="password" required="" />
+                        <input class="form-control" type="password" name="password" placeholder="Password" [(ngModel)]="password" required="" />
                         <span class="fa fa-lock form-control-feedback text-muted"></span>
                         <span class="text-danger" *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">This field is required</span>
                     </div>
