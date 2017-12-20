@@ -51,6 +51,7 @@ export class EditClientComponent implements OnInit {
     .subscribe(result =>{
       this.clientService.getClient();
     });
+      swal('Client Updated!', '', 'success');
       this.route.navigate(['/client']);
   }
 
