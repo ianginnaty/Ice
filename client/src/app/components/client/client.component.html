@@ -1,34 +1,18 @@
 <div class="content-heading">Client Records </div>
-
-<!-- <card>
-  <p>test</p>
-</card> -->
-<!-- <div *ngFor = "let client of clients">
-  <mat-card>
-    <mat-card-header class="card-header"> {{client.first_name}} {{client.last_name}} </mat-card-header>
-    <span></span>
-    <mat-card-subtitle>  Quick View </mat-card-subtitle>
-    <mat-card-content>
-      <p *ngIf="toggleInfo[client._id]">
-        {{client.phone}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="showInfo(client)">View Client</button>
-      <button mat-button (click)="grabClient(client)">Edit</button>
-      <button mat-button color="warn" (click)="deleteClient(client._id)">Delete</button>
-    </mat-card-actions>
-  </mat-card>
-</div> -->
   <div *ngFor = "let client of clients">
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                   <h3>{{client.first_name}} {{client.last_name}}</h3>
-                  <button class="mb-sm btn btn-primary" type="button">Edit</button>
-                  <button class="mb-sm btn btn-info" type="button">View Client</button>
-                  <button class="mb-sm btn btn-danger" type="button">Delete</button>
+
+                  <p *ngIf="toggleInfo[client._id]">
+                    {{client.phone}}
+                  </p>
+                  
+                  <button class="mb-sm btn btn-info" type="button" (click)="showInfo(client)">View Client</button>
+                  <button class="mb-sm btn btn-primary" type="button" (click)="grabClient(client)">Edit</button>
+                  <button class="mb-sm btn btn-danger" type="button" (click)="deleteClient(client._id)">Delete</button>
                 </div>
             </div>
         </div>
