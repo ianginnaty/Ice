@@ -19,6 +19,10 @@ export class AddClientComponent implements OnInit {
   phone: string;
   valForm: FormGroup;
 
+  togglePersonal: boolean = true;
+  toggleContact: boolean =false;
+  toggleRace: boolean = false;
+
   constructor(
     private clientService: ClientService,
     private router: Router,
@@ -33,6 +37,24 @@ export class AddClientComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  showPersonal(){
+    this.togglePersonal = true;
+    this.toggleContact = false;
+    this.toggleRace = false;
+  }
+
+  showContact(){
+    this.togglePersonal = false;
+    this.toggleContact = true;
+    this.toggleRace = false;
+  }
+
+  showRace(){
+    this.togglePersonal = false;
+    this.toggleContact = false;
+    this.toggleRace = true;
   }
 
   submitForm($ev, value: any) {
