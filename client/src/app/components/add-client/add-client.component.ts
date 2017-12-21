@@ -22,7 +22,7 @@ export class AddClientComponent implements OnInit {
   togglePersonal: boolean = true;
   toggleContact: boolean =false;
   toggleRace: boolean = false;
-
+  
   constructor(
     private clientService: ClientService,
     private router: Router,
