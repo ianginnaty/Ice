@@ -69,7 +69,6 @@ export class RegisterComponent implements OnInit {
         for (let c in this.passwordForm.controls) {
             this.passwordForm.controls[c].markAsTouched();
         }
-        debugger;
         if (this.valForm.valid) {
             this.addUser(user);
             console.log('Valid!');

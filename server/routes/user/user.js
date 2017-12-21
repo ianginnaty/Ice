@@ -60,7 +60,8 @@ router.post('/authenticate', (req, res, next) => {
             last_name: user.last_name,
             email: user.email,
             user_name: user.user_name
-          }
+          },
+          msg: 'Success'
         });
       }
       else {
