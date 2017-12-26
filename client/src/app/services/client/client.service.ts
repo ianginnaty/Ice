@@ -39,7 +39,6 @@ export class ClientService {
 
   //selected client
   grabClient(client){
-  debugger;
   var headers = new Headers();
   headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:3000/api/client/'+client._id, {headers:headers})
