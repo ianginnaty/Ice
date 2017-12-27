@@ -59,6 +59,10 @@ export class ClientComponent implements OnInit {
   newClient(){
     this.router.navigate(['/add-client']);
   }
+  
+  giTest() {
+	this.router.navigate(['/gi-test']);
+  }
 
   confirmDelete(id:any){
     swal({

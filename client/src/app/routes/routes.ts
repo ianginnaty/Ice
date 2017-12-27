@@ -13,6 +13,7 @@ import { ClientComponent } from '../components/client/client.component';
 import { UserComponent } from '../components/user/user.component';
 import { EditClientComponent } from '../components/edit-client/edit-client.component';
 import { AddClientComponent } from '../components/add-client/add-client.component';
+import { GiTestComponent } from '../components/gi-test/gi-test.component';
 import { AuthGuard } from '../guards/auth.guard';
 
 export const routes = [
@@ -37,7 +38,8 @@ export const routes = [
             { path: 'client', component: ClientComponent, canActivate:[AuthGuard] },
             { path: 'user', component: UserComponent, canActivate:[AuthGuard] },
             { path: 'edit-client', component: EditClientComponent },
-            { path: 'add-client', component: AddClientComponent }
+            { path: 'add-client', component: AddClientComponent },
+            { path: 'gi-test', component: GiTestComponent }
         ]
     },
 

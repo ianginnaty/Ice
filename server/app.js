@@ -49,7 +49,7 @@ app.use('/api', client);
 app.use('/api', user);
 
 //testing
-app.get('/', (req, res, )=>{
+app.get('/', (req, res)=>{
   res.send('Here We Go');
 });
 

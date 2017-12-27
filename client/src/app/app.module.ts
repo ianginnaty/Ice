@@ -40,6 +40,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { AddClientComponent } from './components/add-client/add-client.component';
+import { GiTestComponent } from './components/gi-test/gi-test.component';
 import { ClientFilterPipe } from './pipes/client-filter.pipe';
 
 // https://github.com/ocombe/ng2-translate/issues/218
@@ -57,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
         LoginComponent,
         EditClientComponent,
         AddClientComponent,
-        ClientFilterPipe
+        ClientFilterPipe,
+        GiTestComponent
     ],
     imports: [
         HttpClientModule,
