@@ -25,6 +25,7 @@ export class UserblockComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.user.name = JSON.parse(localStorage.user).user_name;
     }
 
     userBlockIsVisible() {

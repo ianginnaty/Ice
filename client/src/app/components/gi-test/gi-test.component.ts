@@ -14,7 +14,7 @@ export class GiTestComponent implements OnInit {
   }
   
   backOne() {
-	this._location.back();
+	  this._location.back();
   }
 
 }
