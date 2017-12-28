@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { GiTest } from '../../models/gitest/gitest';
 
 @Component({
   selector: 'app-gi-test',
@@ -8,13 +8,12 @@ import { Location } from '@angular/common';
 })
 export class GiTestComponent implements OnInit {
 
-  constructor(private _location: Location) { }
+  maxLength = 2400;
+  tagLength = 48;
+
+  model = new GiTest;
 
   ngOnInit() {
-  }
-  
-  backOne() {
-	  this._location.back();
   }
 
 }
