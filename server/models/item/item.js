@@ -41,7 +41,7 @@ module.exports.create = function(json) {
   Item.addPrice(newItem, json.price);
   
   if (null != json.quantity) {
-    newItem.quantity = request.body.quantity;
+    newItem.quantity = json.quantity;
   }
 
   if (null != json.details) {

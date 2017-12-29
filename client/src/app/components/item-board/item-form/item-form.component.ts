@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators }   from '@angular/forms';
 import { Item } from '../../../models/item/item';
 import { validateConfig } from '@angular/router/src/config';
@@ -13,7 +13,9 @@ import { ItemService } from '../../../services/item/item.service';
     ItemService
   ]
 })
-export class ItemFormComponent implements OnInit {
+export class ItemFormComponent {
+
+  @Output() didSubmit = new EventEmitter<void>();
 
   mode: string = "add";
   isEditing: boolean = false;
@@ -46,6 +48,7 @@ export class ItemFormComponent implements OnInit {
 
   constructor(
     private item: Item = new Item,
+    private oldItem: Item = null,
     private itemService: ItemService
   ) {
     // TODO: extract to utility function
@@ -82,9 +85,6 @@ export class ItemFormComponent implements OnInit {
     this.itemForm = new FormGroup(group);
   }
 
-  ngOnInit() : void {
-  }
-
   submit() : void {
     var that = this;
 
@@ -95,6 +95,7 @@ export class ItemFormComponent implements OnInit {
       .subscribe(function (response) {
         if (response.success) {
           that.clearForm();
+          that.didSubmit.emit();
           console.log(response.msg);
         }
         else {
@@ -104,12 +105,30 @@ export class ItemFormComponent implements OnInit {
   }
 
   clearForm(): void {
-    /*
-    for (let key in this.item) {
-      this.item[key] = null;
-    }
-    */
+    this.mode = "add";
+    this.isEditing = false;
     this.itemForm.reset();
+  }
+
+  loadItem(item : Item) : void {
+    this.mode = "edit";
+    this.isEditing = true;
+
+    this.oldItem = item;
+
+    let newItem = new Item();
+    for (let field in item) {
+      newItem[field] = item[field];
+    }
+    this.item = newItem;
+  }
+
+  resetItem() : void {
+    let newItem = new Item();
+    for (let field in this.oldItem) {
+      newItem[field] = this.oldItem[field];
+    }
+    this.item = newItem;
   }
 
 }

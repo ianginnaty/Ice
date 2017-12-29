@@ -7,8 +7,20 @@ const Item = require('../../models/item/item');
 
 //Retrieve data
 router.get('/item/all', (request, result, next)=>{
-  Item.find(function(error, item){
-    result.json(item);
+  Item.find(function(error, items){
+    if (error) {
+      result.json({
+        success: false,
+        msg: "Failed to load",
+        reasons: [ error ]
+      });
+    }
+    else {
+      result.json({
+        success: true,
+        items: items
+      });
+    }
   });
 });
 
@@ -34,7 +46,7 @@ router.post('/item/add', (request, result, next)=>{
 
   Item.addItem(newItem, (error, item) => {
     if (error) {
-      output.reasons = [ "Data base error", error ];
+      output.reasons = [ "Database error", error ];
       result.json(output);
     }
     else{

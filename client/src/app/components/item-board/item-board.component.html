@@ -1,4 +1,10 @@
 <div class="row">
-  <app-item-form class="col-md-4"></app-item-form>
-  <app-item-list class="col-md-8"></app-item-list>
+  <app-item-form class="col-md-4" (didSubmit)="list.refresh()" #form></app-item-form>
+  <div class="col-md-8">
+    <div *ngIf="itemSelected">
+      <button class="btn btn-success btn-md" (click)="form.loadItem(item)">Edit</button>
+      <button class="btn btn-danger btn-md">Delete</button>
+    </div>
+    <app-item-list #list (select)="setItem($event)"></app-item-list>
+  </div>
 </div>

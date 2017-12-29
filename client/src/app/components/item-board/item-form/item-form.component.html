@@ -83,6 +83,6 @@
   </div>
   <div class="text-center">
     <button class="btn btn-success btn-md" (click)="submit()" [attr.disabled]="itemForm.valid ? null : true">Submit</button>
-    <button class="btn btn-danger btn-md" *ngIf="isEditing">Cancel</button>
+    <button class="btn btn-danger btn-md" (click)="resetItem()" *ngIf="isEditing">Cancel</button>
   </div>
 </form>

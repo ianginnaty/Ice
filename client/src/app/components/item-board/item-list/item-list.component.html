@@ -1,1 +1,5 @@
-<p>list</p>
+<ul>
+  <li *ngFor="let item of items">
+    <app-item-li [item]="item" (click)="doSelect(item)"></app-item-li>
+  </li>
+</ul>

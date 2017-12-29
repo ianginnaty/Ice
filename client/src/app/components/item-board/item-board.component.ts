@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { Item } from '../../models/item/item';
 
 @Component({
   selector: 'app-item-board',
   templateUrl: './item-board.component.html',
-  styleUrls: ['./item-board.component.scss']
+  styleUrls: ['./item-board.component.scss'],
+  providers: [
+    Item
+  ]
 })
-export class ItemBoardComponent implements OnInit {
+export class ItemBoardComponent {
 
-  constructor() { }
+  constructor(
+    private item : Item
+  ) { }
 
-  ngOnInit() {
+  setItem(item : Item) {
+    this.item = item;
+  }
+
+  get itemSelected() : boolean {
+    return null != this.item._id;
   }
 
 }
