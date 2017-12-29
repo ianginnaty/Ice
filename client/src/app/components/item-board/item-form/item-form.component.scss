@@ -1,0 +1,81 @@
+legend {
+  text-transform: capitalize;
+}
+
+label:not(.block) {
+  text-align: right;
+  padding-right: .7em;
+}
+
+input {
+  padding: 0 .3em;
+}
+
+input, textarea {
+  width: 100%;
+  border: solid .08em #ABC;
+  border-left-width: .6em;
+  border-radius: .4em 0 0 .4em;
+  transition: border .6s;
+}
+
+input:not(.ng-pristine):not(:required), textarea:not(.ng-pristine):not(:required) {
+  border-color: #8BE;
+}
+
+input:required:invalid:not(.ng-pristine),
+textarea:required:invalid:not(.ng-pristine),
+input.ng-invalid:not(.ng-pristine),
+textarea.ng-invalid:not(.ng-pristine) {
+  border-color: #A04;
+}
+
+input:required:valid, textarea:required:valid {
+  border-color: #0A3;
+}
+
+span {
+  color: #AAA;
+  white-space: nowrap;
+}
+
+textarea {
+  resize: vertical;
+  height: 6.5em;
+}
+
+.block {
+  display: block;
+}
+
+form > div {
+  margin-bottom: .4em;
+}
+
+.separate-above {
+  margin-top: .8em;
+}
+
+.separate-above::before {
+  display: block;
+  content: '';
+  width: 83%;
+  border-top: solid .08em #99A;
+  margin-bottom: .6em;
+}
+
+.pad-left-5 {
+  padding-left: .5em;
+}
+
+.separate-above.pad-left-5::before {
+  margin-left: -.5em;
+}
+
+.short {
+  margin-bottom: -1em;
+}
+
+:disabled {
+  background-color: #888;
+}

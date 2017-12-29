@@ -1,0 +1,88 @@
+<form ng-submit="itemForm.$valid && submit()" [formGroup]="itemForm">
+  <legend>
+    {{ mode }} item
+    <span *ngIf="isEditing">{{ item.title }}</span>
+  </legend>
+  <div class="row">
+    <label class="col-md-3" for="item-title">Title</label>
+    <div class="col-md-7">
+      <input
+        type="text"
+        id="item-title"
+        pattern="{{config.title.pattern.source}}"
+        minlength="{{config.title.minLength}}"
+        maxlength="{{config.title.maxLength}}"
+        formControlName="title"
+        [(ngModel)]="item.title"
+        #itemTitle
+        placeholder="Title (at least 4 characters)"
+        [attr.required]="config.title.required ? true : null"
+      >
+    </div>
+    <span class="col-md-2">{{ itemTitle.value.length }} / {{ config.title.maxLength }}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="item-description">Description</label>
+    <div class="col-md-7">
+      <input
+        type="text"
+        id="item-title"
+        maxlength="{{config.description.maxLength}}"
+        formControlName="description"
+        [(ngModel)]="item.description"
+        #itemDescription
+        placeholder="Short description"
+        [attr.required]="config.description.required ? true : null"
+      >
+    </div>
+    <span class="col-md-2">{{ itemDescription.value.length }} / {{ config.description.maxLength }}</span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="item-price">Price</label>
+    <div class="col-md-7">
+      <input
+        type="text"
+        class="text-right"
+        id="item-price"
+        pattern="{{config.price.pattern.source}}"
+        formControlName="price"
+        [(ngModel)]="item.price"
+        placeholder="$0.00"
+        [attr.required]="config.price.required ? true : null"
+      >
+    </div>
+    <span class="col-md-2"></span>
+  </div>
+  <div class="row">
+    <label class="col-md-3" for="item-quantity">Quantity</label>
+    <div class="col-md-7">
+      <input
+        type="text"
+        class="text-right"
+        id="item-quantity"
+        pattern="{{config.quantity.pattern.source}}"
+        formControlName="quantity"
+        placeholder="1"
+        [(ngModel)]="item.quantity"
+        [attr.required]="config.quantity.required ? true : null"
+      >
+    </div>
+    <span class="col-md-2"></span>
+  </div>
+  <div class="separate-above pad-left-5">
+    <label class="block">Details</label>
+    <textarea
+      id="item-details"
+      formControlName="details"
+      maxlength="{{config.details.maxLength}}"
+      [(ngModel)]="item.details"
+      #itemDetails
+      [attr.required]="config.details.required ? true : null"
+    ></textarea>
+    <span class="block text-right short">{{ itemDetails.value.length }} / {{ config.details.maxLength }}</span>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-success btn-md" (click)="submit()" [attr.disabled]="itemForm.valid ? null : true">Submit</button>
+    <button class="btn btn-danger btn-md" *ngIf="isEditing">Cancel</button>
+  </div>
+</form>

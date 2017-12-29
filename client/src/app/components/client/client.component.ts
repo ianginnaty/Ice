@@ -60,8 +60,8 @@ export class ClientComponent implements OnInit {
     this.router.navigate(['/add-client']);
   }
   
-  giTest() {
-	this.router.navigate(['/gi-test']);
+  itemTest() {
+	this.router.navigate(['/items']);
   }
 
   confirmDelete(id:any){

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GiTestComponent } from './gi-test.component';
+import { ItemBoardComponent } from './item-board.component';
 
-describe('GiTestComponent', () => {
-  let component: GiTestComponent;
-  let fixture: ComponentFixture<GiTestComponent>;
+describe('ItemBoardComponent', () => {
+  let component: ItemBoardComponent;
+  let fixture: ComponentFixture<ItemBoardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GiTestComponent ]
+      declarations: [ ItemBoardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GiTestComponent);
+    fixture = TestBed.createComponent(ItemBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -40,8 +40,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { AddClientComponent } from './components/add-client/add-client.component';
-import { GiTestComponent } from './components/gi-test/gi-test.component';
 import { ClientFilterPipe } from './pipes/client-filter.pipe';
+import { ItemFormComponent } from './components/item-board/item-form/item-form.component';
+import { ItemListComponent } from './components/item-board/item-list/item-list.component';
+import { ItemLiComponent } from './components/item-board/item-li/item-li.component';
+import { ItemBoardComponent } from './components/item-board/item-board.component';
 
 // https://github.com/ocombe/ng2-translate/issues/218
 export function createTranslateLoader(http: HttpClient) {
@@ -59,7 +62,10 @@ export function createTranslateLoader(http: HttpClient) {
         EditClientComponent,
         AddClientComponent,
         ClientFilterPipe,
-        GiTestComponent
+        ItemFormComponent,
+        ItemListComponent,
+        ItemLiComponent,
+        ItemBoardComponent
     ],
     imports: [
         HttpClientModule,

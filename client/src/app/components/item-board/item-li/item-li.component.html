@@ -1,0 +1,19 @@
+<div>
+    <header ng-class="{true:'low-stock', false:''}[lowStock]">
+      <span *ngIf="lowStock">
+        There are only {{ item.quantity }} left of this item!
+      </span>
+    </header>
+    <dl>
+      <dt>Title</dt>
+      <dd>{{ item.title }}</dd>
+      <dt>Description</dt>
+      <dd>{{ item.description }}</dd>
+      <dt class="two-col">Price</dt>
+      <dd>{{ item.price }}</dd>
+      <dt class="two-col">Quantity</dt>
+      <dd>{{ item.quantity }}</dd>
+      <dt class="full-span">Details</dt>
+      <dd>{{ item.details }}</dd>
+    </dl>
+  </div>
