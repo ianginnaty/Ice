@@ -2,13 +2,15 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators }   from '@angular/forms';
 import { Item } from '../../../models/item/item';
 import { validateConfig } from '@angular/router/src/config';
+import { ItemService } from '../../../services/item/item.service';
 
 @Component({
   selector: 'app-item-form',
   templateUrl: './item-form.component.html',
   styleUrls: ['./item-form.component.scss'],
   providers: [
-    Item
+    Item,
+    ItemService
   ]
 })
 export class ItemFormComponent implements OnInit {
@@ -43,7 +45,8 @@ export class ItemFormComponent implements OnInit {
   itemForm = null;
 
   constructor(
-    private item: Item = new Item
+    private item: Item = new Item,
+    private itemService: ItemService
   ) {
     // TODO: extract to utility function
     let config = this.config;
@@ -83,11 +86,30 @@ export class ItemFormComponent implements OnInit {
   }
 
   submit() : void {
+    var that = this;
 
+    console.log("Submitting...");
+
+    this.itemService
+      .addItem(this.item)
+      .subscribe(function (response) {
+        if (response.success) {
+          that.clearForm();
+          console.log(response.msg);
+        }
+        else {
+          console.error(response);
+        }
+      });
   }
 
-  print(): void {
-    console.log(this);
+  clearForm(): void {
+    /*
+    for (let key in this.item) {
+      this.item[key] = null;
+    }
+    */
+    this.itemForm.reset();
   }
 
 }

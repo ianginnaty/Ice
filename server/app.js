@@ -12,6 +12,7 @@ var app = express();
 
 const client = require('./routes/routes');
 const user = require('./routes/user/user');
+const item = require('./routes/item/item');
 
 //Connect to MongoDb
 mongoose.connect(database.database);
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.use('/api', client);
 app.use('/api', user);
+app.use('/api', item);
 
 //testing
 app.get('/', (req, res)=>{
