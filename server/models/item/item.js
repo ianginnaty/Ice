@@ -23,7 +23,6 @@ const ItemSchema = mongoose.Schema({
     type: String,
     default: ""
   }
-
 });
 
 const Item = module.exports = mongoose.model('Item', ItemSchema);
@@ -37,6 +36,10 @@ module.exports.create = function(json) {
     title:       json.title,
     description: json.description,
   });
+
+  if (json._id) {
+    newItem._id = json._id;
+  }
 
   Item.addPrice(newItem, json.price);
   

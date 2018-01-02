@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item } from '../../../models/item/item';
 
 @Component({
@@ -9,7 +9,7 @@ import { Item } from '../../../models/item/item';
     Item
   ]
 })
-export class ItemLiComponent implements OnInit {
+export class ItemLiComponent {
 
   constructor(
     private _item : Item
@@ -20,11 +20,14 @@ export class ItemLiComponent implements OnInit {
     this._item = item;
   }
 
-  ngOnInit() {
+  lowStock() {
+    return 5 > this._item.quantity;
   }
 
-  get lowStock() : boolean {
-    return 0 < this._item.quantity && 5 > this._item.quantity;
+  getClasses() {
+    return {
+      "low-stock": this.lowStock()
+    };
   }
 
 }

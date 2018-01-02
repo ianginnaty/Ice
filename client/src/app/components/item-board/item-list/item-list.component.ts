@@ -36,6 +36,10 @@ export class ItemListComponent {
       });
   }
 
+  identifier(index, item) : number {
+    return item._id;
+  }
+
   @Output() select = new EventEmitter<Item>();
 
   doSelect(item : Item) : void {

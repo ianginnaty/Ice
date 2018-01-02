@@ -3,7 +3,7 @@
   <div class="col-md-8">
     <div *ngIf="itemSelected">
       <button class="btn btn-success btn-md" (click)="form.loadItem(item)">Edit</button>
-      <button class="btn btn-danger btn-md">Delete</button>
+      <button class="btn btn-danger btn-md" (click)="form.dropItem(item)">Delete</button>
     </div>
     <app-item-list #list (select)="setItem($event)"></app-item-list>
   </div>

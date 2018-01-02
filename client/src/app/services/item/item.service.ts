@@ -8,17 +8,33 @@ export class ItemService {
 
   constructor(private http: Http) { }
 
-  // retrieving ClientService
-  getItems(){
+  // retrieving Items
+  getItems() {
     return this.http.get('http://localhost:3000/api/item/all')
     .map(res => res.json());
   }
 
-  //add Client
-  addItem(newItem){
+  // add Item
+  addItem(newItem : Item) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/api/item/add', newItem, { headers: headers })
+      .map(res => res.json());
+  }
+
+  // update Item
+  updateItem(item : Item) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/item/update', item, { headers: headers })
+      .map(res => res.json());
+  }
+
+  // delete Item
+  dropItem(item : Item) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/item/delete', { _id: item._id }, { headers: headers })
       .map(res => res.json());
   }
 

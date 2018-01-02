@@ -1,0 +1,61 @@
+.item-li {
+
+  $angle-io-blue: #23b7e5;
+  border-radius: .3em;
+  border: solid .08em  $angle-io-blue;
+
+  header {
+    min-height: 1em;
+    display: block;
+    width: 100%;
+    background:  $angle-io-blue;
+    color: #000;
+    padding: 0 .4em;
+  }
+
+  dl {
+    
+    padding: .4em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+
+    dt, dd {
+      display: inline-block;
+    }
+
+    $dt-width: 7em;
+    dt {
+      flex: 1 0 $dt-width;
+    }
+
+    dd {
+      flex: 1 1 calc(100% - #{$dt-width});
+    }
+
+    .two-col + dd {
+      flex: 1 1 calc(50% - #{$dt-width});
+    }
+
+    .full-span, .full-span + dd {
+      flex: none;
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+}
+
+.low-stock {
+  $canary: #FC5;
+
+  border-color: $canary;
+
+  header {
+    background: $canary;
+    font-weight: 600;
+    font-style: italic;
+  }
+}

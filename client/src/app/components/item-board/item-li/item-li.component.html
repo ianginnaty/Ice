@@ -1,6 +1,6 @@
-<div>
-  <header ng-class="{true:'low-stock', false:''}[lowStock]">
-    <span *ngIf="lowStock">
+<div id="item-li-{{ _item._id }}" [ngClass]="{ 'item-li': true, 'low-stock': lowStock() }">
+  <header>
+    <span *ngIf="lowStock()">
       There are only {{ _item.quantity }} of these items left in stock!
     </span>
   </header>
@@ -10,7 +10,7 @@
     <dt>Description</dt>
     <dd>{{ _item.description }}</dd>
     <dt class="two-col">Price</dt>
-    <dd>{{ _item.price }}</dd>
+    <dd>$ {{ _item.price }}</dd>
     <dt class="two-col">Quantity</dt>
     <dd>{{ _item.quantity }}</dd>
     <dt class="full-span">Details</dt>

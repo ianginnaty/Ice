@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of items">
+  <li *ngFor="let item of items;trackBy:identifier">
     <app-item-li [item]="item" (click)="doSelect(item)"></app-item-li>
   </li>
 </ul>

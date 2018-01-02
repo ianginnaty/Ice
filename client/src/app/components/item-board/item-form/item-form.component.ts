@@ -17,7 +17,6 @@ export class ItemFormComponent {
 
   @Output() didSubmit = new EventEmitter<void>();
 
-  mode: string = "add";
   isEditing: boolean = false;
 
   config = {
@@ -45,6 +44,10 @@ export class ItemFormComponent {
 
   validators = null;
   itemForm = null;
+
+  get mode() : string {
+    return this.isEditing ? "edit" : "add";
+  }
 
   constructor(
     private item: Item = new Item,
@@ -90,9 +93,17 @@ export class ItemFormComponent {
 
     console.log("Submitting...");
 
-    this.itemService
-      .addItem(this.item)
-      .subscribe(function (response) {
+    let promise;
+
+    if (this.isEditing) {
+      promise = this.itemService.updateItem(this.item);
+    }
+    else {
+      promise = this.itemService.addItem(this.item);
+    }
+
+    promise.subscribe(
+      function (response) {
         if (response.success) {
           that.clearForm();
           that.didSubmit.emit();
@@ -101,17 +112,17 @@ export class ItemFormComponent {
         else {
           console.error(response);
         }
-      });
+      }
+    );
   }
 
   clearForm(): void {
-    this.mode = "add";
     this.isEditing = false;
     this.itemForm.reset();
+    this.item = new Item();
   }
 
   loadItem(item : Item) : void {
-    this.mode = "edit";
     this.isEditing = true;
 
     this.oldItem = item;
@@ -121,6 +132,21 @@ export class ItemFormComponent {
       newItem[field] = item[field];
     }
     this.item = newItem;
+  }
+
+  dropItem(item : Item) : void {
+    // this.confirmDelete(item);
+
+    let permit = window.confirm("Are you sure you want to delete this item?\n    " + item.title);
+
+    if (permit) {
+      let that = this;
+      this.itemService
+        .dropItem(item)
+        .subscribe(function () {
+          that.didSubmit.emit();
+        });
+    }
   }
 
   resetItem() : void {
